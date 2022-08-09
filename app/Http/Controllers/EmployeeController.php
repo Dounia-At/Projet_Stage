@@ -8,5 +8,56 @@ use App\Employee;
 
 class EmployeeController extends Controller
 {
-    //
+    public function __construct(){
+        //$this->middleware('auth');
+    }
+    
+    public function show($id) {
+        
+        return view('employee .show');
+    }
+
+    public function index() {
+       
+        $listcat = employee ::all();
+        return view('employee .index', ['employees' => $listcat]);
+    }
+    public function create() {
+        return view('employee .create');
+    }
+    public function store(Request $request) {
+        $employee  = new employee ();
+        $employee ->libelle = $request->input('libelle');
+        
+        $employee ->save();
+
+        session()->flash('success', 'La employee  est bien enregistrés!!');
+
+        return redirect('employees');
+    }
+    public function edit($id) {
+        $employee  = employee ::find($id);
+
+        //$this->authorize('update', $employee );
+
+        return view('employee .edit', ['employee ' => $employee ]);
+    }
+    public function update(Request $request, $id) {
+        $employee  = employee::find($id);
+
+        $employee ->libelle = $request->input('libelle');
+        
+        $employee ->save();
+
+        return redirect('employees');
+    }
+    public function destroy($id) {
+        $employee  = employee::find($id);
+
+        $employee ->delete();
+
+        return redirect('employees');
+    
+    }
+
 }
