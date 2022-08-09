@@ -21,6 +21,13 @@ class CreateMateriauxTable extends Migration
             $table->string('marque');
             $table->datetime('date_entree')->nullable();
             $table->string('description');
+            
+            $table->integer('fournisseur_id')->unsigned();
+            $table->foreign('fournisseur_id')->references('id')->on('fournisseurs');
+            
+            $table->integer('categorie_id')->unsigned();
+            $table->foreign('categorie_id')->references('id')->on('categories');
+        
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();
         });

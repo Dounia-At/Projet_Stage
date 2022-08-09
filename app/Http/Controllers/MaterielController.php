@@ -17,62 +17,65 @@ use App\Categorie;
 class MaterielController extends Controller
 {
     public function __construct(){
-       // $this->middleware('auth');
+        //$this->middleware('auth');
     }
     
     public function show($id) {
         
-        return view('MATERIEL.show');
+        return view('materiel.show');
     }
 
     public function index() {
        
-        /*if(Auth::user()->is_admin)     $listcv = Cv::all();
-        else    $listcv = Auth::user()->cvs;
-
-        return view('cv.index', ['cvs' => $listcv]);*/
+        $listmat = Materiel::all();
+        return view('materiel.index', ['materiaux' => $listmat]);
     }
     public function create() {
-        return view('MATERIEL.create');
+        return view('materiel.create');
     }
-    public function store() {
-       /* $cv = new Cv();
-        $cv->titre = $request->input('titre');
-        $cv->presentation = $request->input('presentation');
-        $cv->user_id = Auth::user()->id;
-        if($request->hasFile('photo')){
-            $cv->photo = $request->photo->store('image/');
-        }
+    public function store(Request $request) {
+        $materiel = new Materiel();
+        $materiel->nom = $request->input('nom');
+        $materiel->photo = $request->input('photo');
+        $materiel->quantiteStock = $request->input('quantiteStock');
+        $materiel->marque = $request->input('marque');
+        $materiel->date_entree = $request->input('date_entree');
+        $materiel->description = $request->input('description');
+        
+        $materiel->save();
 
-        $cv->save();
+        session()->flash('success', 'Le materiel est bien enregistrés!!');
 
-        session()->flash('success', 'Le cv est bien enregistrés!!');
-
-        return redirect('cvs');
+        return redirect('materiaux');
     }
     public function edit($id) {
-        $cv = Cv::find($id);
+        $materiel = Materiel::find($id);
 
-        $this->authorize('update', $cv);
+        //$this->authorize('update', $materiel);
 
-        return view('cv.edit', ['cv' => $cv]);
+        return view('materiel.edit', ['materiel' => $materiel]);
     }
-    public function update(cvRequest $request, $id) {
-        $cv = Cv::find($id);
+    public function update(Request $request, $id) {
+        $materiel = Materiel::find($id);
 
-        $cv->titre = $request->input('titre');
-        $cv->presentation = $request->input('presentation');
+        $materiel->nom = $request->input('nom');
+        $materiel->categorie_id = $request->input('categorie_id');
+        $materiel->fournisseur_id = $request->input('fournisseur_id');
+        $materiel->photo = $request->input('photo');
+        $materiel->quantiteStock = $request->input('quantiteStock');
+        $materiel->marque = $request->input('marque');
+        $materiel->date_entree = $request->input('date_entree');
+        $materiel->description = $request->input('description');
+        
+        $materiel->save();
 
-        $cv->save();
-
-        return redirect('cvs');
+        return redirect('materiaux');
     }
     public function destroy($id) {
-        $cv = Cv::find($id);
+        $materiel = Materiel::find($id);
 
-        $cv->delete();
+        $materiel->delete();
 
-        return redirect('cvs');*/
-
+        return redirect('materiaux');
     }
 }

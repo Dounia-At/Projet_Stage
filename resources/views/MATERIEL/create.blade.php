@@ -8,23 +8,78 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form action="{{ url('categories') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('materiaux') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
             
-                <div class="form-group @if($errors->get('libelle')) has-error @endif">
-                <label for="libelle">Libelle</label>
-                <input type="text" name="libelle" class="form-control" value="{{ old('libelle') }}">
-                @if($errors->get('libelle'))
-                    <div class="alert alert-warning">
-                        <ul>
-                        @foreach($errors->get('libelle') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-                @endif
+                <div class="form-group @if($errors->get('nom')) has-error @endif">
+                    <label for="nom">Libelle</label>
+                    <input type="text" name="nom" class="form-control" value="{{ old('nom') }}">
+                    @if($errors->get('nom'))
+                        <div class="alert alert-warning">
+                            <ul>
+                            @foreach($errors->get('nom') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
-                
+                <div class="form-group @if($errors->get('photo')) has-error @endif">
+                    <label for="photo">Image</label>
+                    <input type="file" name="nom" class="form-control" value="{{ old('photo') }}">
+                </div>
+                <div class="form-group @if($errors->get('quantiteStock')) has-error @endif">
+                    <label for="quantiteStock">Quantite de stock</label>
+                    <input type="number" name="nom" class="form-control" value="{{ old('quantiteStock') }}">
+                    @if($errors->get('quantiteStock'))
+                        <div class="alert alert-warning">
+                            <ul>
+                            @foreach($errors->get('quantiteStock') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group @if($errors->get('marque')) has-error @endif">
+                <label for="marque">Marque</label>
+                    <input type="text" name="marque" class="form-control" value="{{ old('marque') }}">
+                    @if($errors->get('marque'))
+                        <div class="alert alert-warning">
+                            <ul>
+                            @foreach($errors->get('marque') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group @if($errors->get('date_entree')) has-error @endif">
+                    <label for="date_entree">Date d'entree</label>
+                    <input type="date" name="date_entree" class="form-control" value="{{ old('date_entree') }}">
+                    @if($errors->get('date_entree'))
+                        <div class="alert alert-warning">
+                            <ul>
+                            @foreach($errors->get('date_entree') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group @if($errors->get('description')) has-error @endif">
+                    <label for="nom">Libelle</label>
+                    <textarea name="nom" class="form-control" >{{ old('nom') }} </textarea>
+                    @if($errors->get('nom'))
+                        <div class="alert alert-warning">
+                            <ul>
+                            @foreach($errors->get('nom') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 
                 
                 <div class="form-group">
