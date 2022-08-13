@@ -21,8 +21,9 @@ class MaterielController extends Controller
     }
     
     public function show($id) {
+        $materiel = Materiel::find($id);
         
-        return view('materiel.show');
+        return view('materiel.show', ['materiel' => $materiel]);
     }
 
     public function index() {
@@ -31,13 +32,20 @@ class MaterielController extends Controller
         return view('materiel.index', ['materiaux' => $listmat]);
     }
     public function create() {
-        return view('materiel.create');
+        $listcat = Categorie::all();
+        $listfournisseur = Fournisseur::all();
+        
+        return view('materiel.create', ['categories' => $listcat, 'fournisseurs' => $listfournisseur]);
     }
     public function store(Request $request) {
         $materiel = new Materiel();
         $materiel->nom = $request->input('nom');
-        $materiel->photo = $request->input('photo');
-        $materiel->quantiteStock = $request->input('quantiteStock');
+        if($request->hasFile('photo')){
+            $materiel->photo = $request->photo->store('image/');
+        }
+        $materiel->categorie_id = $request->input('categorie_id');
+        $materiel->fournisseur_id = $request->input('fournisseur_id');
+        $materiel->quantiteStock = (int) $request->input('quantiteStock');
         $materiel->marque = $request->input('marque');
         $materiel->date_entree = $request->input('date_entree');
         $materiel->description = $request->input('description');
@@ -50,19 +58,24 @@ class MaterielController extends Controller
     }
     public function edit($id) {
         $materiel = Materiel::find($id);
-
+        $listcat = Categorie::all();
+        $listfournisseur = Fournisseur::all();
+        
         //$this->authorize('update', $materiel);
 
-        return view('materiel.edit', ['materiel' => $materiel]);
+        return view('materiel.edit', ['materiel' => $materiel, 'categories' => $listcat, 'fournisseurs' => $listfournisseur]);
     }
     public function update(Request $request, $id) {
         $materiel = Materiel::find($id);
+        
 
         $materiel->nom = $request->input('nom');
         $materiel->categorie_id = $request->input('categorie_id');
         $materiel->fournisseur_id = $request->input('fournisseur_id');
-        $materiel->photo = $request->input('photo');
-        $materiel->quantiteStock = $request->input('quantiteStock');
+        if($request->hasFile('photo')){
+            $materiel->photo = $request->photo->store('image/');
+        }
+        $materiel->quantiteStock = (int) $request->input('quantiteStock');
         $materiel->marque = $request->input('marque');
         $materiel->date_entree = $request->input('date_entree');
         $materiel->description = $request->input('description');

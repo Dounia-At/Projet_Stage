@@ -12,13 +12,13 @@
                 <input type="hidden" name="_method" value="PUT">
                 {{ csrf_field() }}
             
-                <div class="form-group @if($errors->get('libelle')) has-error @endif">
-                <label for="libelle">Nouveau fournisseur :</label>
-                <input type="text" name="libelle" class="form-control" value="{{ old('libelle') }}">
-                @if($errors->get('libelle'))
+                <div class="form-group @if($errors->get('nomFornisseur')) has-error @endif">
+                <label for="nomFornisseur">Nom complet :</label>
+                <input type="text" name="nomFornisseur" class="form-control" value="{{ old('nomFornisseur') }}">
+                @if($errors->get('nomFornisseur'))
                     <div class="alert alert-warning">
                         <ul>
-                        @foreach($errors->get('libelle') as $message)
+                        @foreach($errors->get('nomFornisseur') as $message)
                             <li>{{ $message }}</li>
                         @endforeach
                         </ul>
@@ -26,8 +26,9 @@
                 @endif
                 </div>
                 <div class="form-group @if($errors->get('adresse')) has-error @endif">
-                    <label for="adresse">Nouveau fournisseur :</label>
-                    <input type="text" name="adresse" class="form-control" value="{{ old('adresse') }}">
+                    <label for="adresse">Adresse :</label>
+                    <textarea name="adresse" class="form-control" >{{ old('adresse') }} </textarea>
+                    
                     @if($errors->get('adresse'))
                         <div class="alert alert-warning">
                             <ul>
@@ -38,7 +39,7 @@
                         </div>
                     @endif
                 </div> <div class="form-group @if($errors->get('telephone')) has-error @endif">
-                <label for="telephone">Nouveau fournisseur :</label>
+                <label for="telephone">Tel :</label>
                 <input type="number" name="telephone" class="form-control" value="{{ old('telephone') }}">
                 @if($errors->get('telephone'))
                     <div class="alert alert-warning">
@@ -51,7 +52,7 @@
                 @endif
                 </div>
                 <div class="form-group @if($errors->get('email')) has-error @endif">
-                <label for="email">Nouveau fournisseur :</label>
+                <label for="email">Email :</label>
                 <input type="text" name="email" class="form-control" value="{{ old('email') }}">
                 @if($errors->get('email'))
                     <div class="alert alert-warning">
