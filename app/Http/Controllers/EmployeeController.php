@@ -27,7 +27,12 @@ class EmployeeController extends Controller
     }
     public function store(Request $request) {
         $employee  = new employee ();
-        $employee ->libelle = $request->input('libelle');
+        $employee ->cin = $request->input('cin');
+        $employee ->nom = $request->input('nom');
+        $employee ->prenom = $request->input('prenom');
+        $employee ->adresse = $request->input('adresse');
+        $employee ->email = $request->input('email');
+
         
         $employee ->save();
 
@@ -45,7 +50,11 @@ class EmployeeController extends Controller
     public function update(Request $request, $id) {
         $employee  = employee::find($id);
 
-        $employee ->libelle = $request->input('libelle');
+        $employee ->cin = $request->input('cin');
+        $employee ->nom = $request->input('nom');
+        $employee ->prenom = $request->input('prenom');
+        $employee ->adresse = $request->input('adresse');
+        $employee ->email = $request->input('email');
         
         $employee ->save();
 
