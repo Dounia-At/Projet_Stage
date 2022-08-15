@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group @if($errors->get('email')) has-error @endif">
                 <label for="email">Email :</label>
-                <input type="number" name="email" class="form-control" value="{{ old('email') }}">
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                 @if($errors->get('email'))
                     <div class="alert alert-warning">
                         <ul>

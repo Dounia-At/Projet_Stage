@@ -17,7 +17,10 @@
         <table class="table">
             <head>
             <tr>
-                <th>fournisseur</th>
+                <th>Fournisseur</th>
+                <th>adresse</th>
+                <th>telephone</th>
+                <th>email</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -25,7 +28,10 @@
             <body>
                 @foreach($fournisseurs as $fournisseur)
                 <tr>
-                    <td>{{ $fournisseur->libelle }} </td>
+                    <td>{{ $fournisseur->nomFornisseur }} </td>
+                    <td>{{ $fournisseur->adresse }} </td>
+                    <td>{{ $fournisseur->telephone }} </td>
+                    <td>{{ $fournisseur->email }} </td>
                     <td>
                         <form action="{{ url('fournisseurs/'.$fournisseur->id) }}" method="post">
                             {{ csrf_field() }}

@@ -14,20 +14,26 @@ class EmployeeController extends Controller
     
     public function show($id) {
         
-        return view('employee .show');
+        return view('employee.show');
     }
 
     public function index() {
        
-        $listcat = employee ::all();
-        return view('employee .index', ['employees' => $listcat]);
+        $listcat = employee::all();
+        return view('employee.index', ['employees' => $listcat]);
     }
     public function create() {
-        return view('employee .create');
+        return view('employee.create');
     }
     public function store(Request $request) {
         $employee  = new employee ();
-        $employee ->libelle = $request->input('libelle');
+        $employee ->cin = $request->input('cin');
+        $employee ->nom = $request->input('nom');
+        $employee ->prenom = $request->input('prenom');
+        $employee ->adresse = $request->input('adresse');
+        $employee->telephone = (int) $request->input('telephone');
+
+        $employee ->email = $request->input('email');
         
         $employee ->save();
 
@@ -36,17 +42,21 @@ class EmployeeController extends Controller
         return redirect('employees');
     }
     public function edit($id) {
-        $employee  = employee ::find($id);
+        $employee  = employee::find($id);
 
         //$this->authorize('update', $employee );
 
-        return view('employee .edit', ['employee ' => $employee ]);
+        return view('employee.edit', ['employee' => $employee ]);
     }
     public function update(Request $request, $id) {
         $employee  = employee::find($id);
 
-        $employee ->libelle = $request->input('libelle');
-        
+        $employee ->cin = $request->input('cin');
+        $employee ->nom = $request->input('nom');
+        $employee ->prenom = $request->input('prenom');
+        $employee ->adresse = $request->input('adresse');
+        $employee->telephone = (int) $request->input('telephone');
+        $employee ->email = $request->input('email');
         $employee ->save();
 
         return redirect('employees');

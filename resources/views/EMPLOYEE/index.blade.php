@@ -17,7 +17,12 @@
         <table class="table">
             <head>
             <tr>
-                <th>employee</th>
+                <th>CIN</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Telephone</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -25,7 +30,12 @@
             <body>
                 @foreach($employees as $employee)
                 <tr>
-                    <td>{{ $employee->libelle }} </td>
+                    <td>{{ $employee->cin }} </td>
+                    <td>{{ $employee->nom }} </td>
+                    <td>{{ $employee->prenom }} </td>
+                    <td>{{ $employee->adresse }} </td>
+                    <td>{{ $employee->email }} </td>
+                    <td>{{ $employee->telephone }} </td>
                     <td>
                         <form action="{{ url('employees/'.$employee->id) }}" method="post">
                             {{ csrf_field() }}
