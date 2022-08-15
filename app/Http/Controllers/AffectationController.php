@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\affectation;
 
+use App\materiel;
+
+use App\employee;
+
+use Auth;
+
 class AffectationController extends Controller
 {
     public function __construct(){
@@ -13,58 +19,70 @@ class AffectationController extends Controller
     }
     
     public function show($id) {
+        $affectation = Affectation::find($id);
         
-        return view('AFFECTATION.show');
+        return view('affectation.show', ['affectation' => $materiel]);
     }
 
     public function index() {
        
-       /* if(Auth::user()->is_admin)     $listcv = Cv::all();
-        else    $listcv = Auth::user()->cvs;
-
-        return view('cv.index', ['cvs' => $listcv]);*/
+        $listaff = Affectation::all();
+        return view('affectation.index', ['affectation' => $listaff]);
     }
     public function create() {
-        return view('AFFECTATION.create');
+        $listmat = Materiel::all();
+        $listemp = Employee::all();
+        
+        return view('affectation.create', ['materiaux' => $listmat, 'employee' => $listemp]);
     }
-    public function store() {
-       /* $cv = new Cv();
-        $cv->titre = $request->input('titre');
-        $cv->presentation = $request->input('presentation');
-        $cv->user_id = Auth::user()->id;
-        if($request->hasFile('photo')){
-            $cv->photo = $request->photo->store('image/');
+    public function store(Request $request) {
+        $materiel = Materiel::find($request->input('materiel_id'));
+        
+        if(($materiel->quantiteStock - (int) $request->input('quantite') )> 0)
+        {
+            $materiel->quantiteStock -= (int) $request->input('quantite');
+            $affectation = new Affectation();
+            $affectation->employee_id = $request->input('employee_id');
+            $affectation->materiel_id = $request->input('materiel_id');
+            $affectation->quantite = (int) $request->input('quantite');
+            
+            $affectation->save();
+
+            session()->flash('success', 'L\'affectation est bien enregistrés!!');
+
         }
-
-        $cv->save();
-
-        session()->flash('success', 'Le cv est bien enregistrés!!');
-
-        return redirect('cvs');*/
+        else{
+            session()->flash('warning', 'Le materiel est insuffisant!!');
+        }
+        
+        return redirect('affectations');
     }
     public function edit($id) {
-      /*  $cv = Cv::find($id);
+        $affectation = Affectation::find($id);
+        $listmat = Materiel::all();
+        $listemp = Employee::all();
+        
+        //$this->authorize('update', $materiel);
 
-        $this->authorize('update', $cv);
-
-        return view('cv.edit', ['cv' => $cv]);*/
+        return view('affectation.edit', ['affectation' => $affectation, 'materiaux' => $listmat, 'employee' => $listemp ]);
     }
-    public function update( $id) {
-       /* $cv = Cv::find($id);
+    public function update(Request $request, $id) {
+        $affectation = Affectation::find($id);
 
-        $cv->titre = $request->input('titre');
-        $cv->presentation = $request->input('presentation');
 
-        $cv->save();
+        $affectation->employee_id = $request->input('employee_id');
+        $affectation->materiel_id = $request->input('materiel_id');
+        $affectation->quantite = (int) $request->input('quantite');
+        
+        $affectation->save();
 
-        return redirect('cvs');*/
+        return redirect('affectations');
     }
     public function destroy($id) {
-      /*  $cv = Cv::find($id);
+        $affectation = Affectation::find($id);
 
-        $cv->delete();
+        $affectation->delete();
 
-        return redirect('cvs');
-*/
+        return redirect('affectations');
     }
 }
