@@ -31,7 +31,7 @@ class FournisseurController extends Controller
         $fournisseur->adresse = $request->input('adresse');
         $fournisseur->telephone = $request->input('telephone');
         $fournisseur->email = $request->input('email');
-
+       
         $fournisseur->save();
 
         session()->flash('success', 'La fournisseur est bien enregistrés!!');
@@ -48,11 +48,11 @@ class FournisseurController extends Controller
     public function update(Request $request, $id) {
         $fournisseur = fournisseur::find($id);
 
-        $fournisseur->nomFornisseur = $request->input('nomFornisseur');
+        $fournisseur->nomFournisseur = $request->input('nomFournisseur');
         $fournisseur->adresse = $request->input('adresse');
-        $fournisseur->telephone = (int) $request->input('telephone');
+        $fournisseur->telephone = $request->input('telephone');
         $fournisseur->email = $request->input('email');
-
+       
         $fournisseur->save();
 
         return redirect('fournisseurs');

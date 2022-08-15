@@ -17,10 +17,11 @@
         <table class="table">
             <head>
             <tr>
-                <th>Fournisseur</th>
+                <th>NomFournisseur</th>
                 <th>adresse</th>
                 <th>telephone</th>
                 <th>email</th>
+
                 <th>Actions</th>
             </tr>
             </head>

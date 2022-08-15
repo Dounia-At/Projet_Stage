@@ -17,12 +17,12 @@
         <table class="table">
             <head>
             <tr>
-                <th>CIN</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Adresse</th>
-                <th>Email</th>
-                <th>Telephone</th>
+                <th>cin</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>adresse</th>
+                <th>email</th>
+                <th>telephone</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -36,6 +36,7 @@
                     <td>{{ $employee->adresse }} </td>
                     <td>{{ $employee->email }} </td>
                     <td>{{ $employee->telephone }} </td>
+                   
                     <td>
                         <form action="{{ url('employees/'.$employee->id) }}" method="post">
                             {{ csrf_field() }}

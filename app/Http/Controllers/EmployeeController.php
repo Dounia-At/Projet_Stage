@@ -31,9 +31,9 @@ class EmployeeController extends Controller
         $employee ->nom = $request->input('nom');
         $employee ->prenom = $request->input('prenom');
         $employee ->adresse = $request->input('adresse');
+        $employee ->email = $request->input('email');
         $employee->telephone = (int) $request->input('telephone');
 
-        $employee ->email = $request->input('email');
         
         $employee ->save();
 
@@ -55,8 +55,10 @@ class EmployeeController extends Controller
         $employee ->nom = $request->input('nom');
         $employee ->prenom = $request->input('prenom');
         $employee ->adresse = $request->input('adresse');
-        $employee->telephone = (int) $request->input('telephone');
         $employee ->email = $request->input('email');
+        $employee->telephone = (int) $request->input('telephone');
+
+        
         $employee ->save();
 
         return redirect('employees');
