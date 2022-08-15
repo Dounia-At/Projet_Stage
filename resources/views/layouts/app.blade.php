@@ -36,14 +36,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        @if (Auth::guest())
+                        @if (Auth::check())
                             <li><a href="{{ url('materiaux') }}">Materiaux</a></li>
                             <li><a href="{{ url('employees') }}">Personnel</a></li>
-                            <li><a href="{{ url('fournisseurs') }}">Fournisseur</a></li>
-                        @else
-                            <li><a href="{{ url('affectation') }}">Affectation</a></li>
-                            <li><a href="{{ url('materiaux') }}">Materiaux</a></li>
-                            <li><a href="{{ url('employees') }}">Personnel</a></li>
+                            <li><a href="{{ url('affectations') }}">Affectation</a></li>
                             <li><a href="{{ url('fournisseurs') }}">Fournisseur</a></li>
                         @endif
                     </ul>

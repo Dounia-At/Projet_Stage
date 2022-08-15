@@ -10,4 +10,8 @@ class Employee extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+    public function affectations()
+    {
+        return $this->hasMany('App\Affectation');
+    }
 }

@@ -14,10 +14,13 @@ use App\Fournisseur;
 
 use App\Categorie;
 
+use App\Http\Requests\materielRequest;
+
+
 class MaterielController extends Controller
 {
     public function __construct(){
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     
     public function show($id) {
@@ -37,7 +40,7 @@ class MaterielController extends Controller
         
         return view('materiel.create', ['categories' => $listcat, 'fournisseurs' => $listfournisseur]);
     }
-    public function store(Request $request) {
+    public function store(materielRequest $request) {
         $materiel = new Materiel();
         $materiel->nom = $request->input('nom');
         if($request->hasFile('photo')){
@@ -65,7 +68,7 @@ class MaterielController extends Controller
 
         return view('materiel.edit', ['materiel' => $materiel, 'categories' => $listcat, 'fournisseurs' => $listfournisseur]);
     }
-    public function update(Request $request, $id) {
+    public function update(materielRequest $request, $id) {
         $materiel = Materiel::find($id);
         
 

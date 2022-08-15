@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group @if($errors->get('telephone')) has-error @endif">
                 <label for="telephone">Tel :</label>
-                <input type="text" name="telephone" class="form-control" value="{{ old('telephone') }}">
+                <input type="tel" name="telephone" class="form-control" value="{{ old('telephone') }}">
                 @if($errors->get('telephone'))
                     <div class="alert alert-warning">
                         <ul>

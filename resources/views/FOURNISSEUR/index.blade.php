@@ -8,20 +8,21 @@
             @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
             @endif
         <h1>Liste des fournisseurs</h1>
         <div class="pull-right ">
             <a href="{{ url('fournisseurs/create') }}" class="btn btn-success">Nouveau fournisseur</a>
         </div>
+        <br> <br> <br>
         <table class="table">
             <head>
             <tr>
-                <th>NomFournisseur</th>
-                <th>adresse</th>
-                <th>telephone</th>
-                <th>email</th>
-
+                <th>Fournisseur</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
             </head>

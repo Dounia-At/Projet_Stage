@@ -6,15 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Employee;
 
+use App\Http\Requests\employeeRequest;
+
+
 class EmployeeController extends Controller
 {
     public function __construct(){
-        //$this->middleware('auth');
-    }
-    
-    public function show($id) {
-        
-        return view('employee.show');
+        $this->middleware('auth');
     }
 
     public function index() {
@@ -25,7 +23,7 @@ class EmployeeController extends Controller
     public function create() {
         return view('employee.create');
     }
-    public function store(Request $request) {
+    public function store(employeeRequest $request) {
         $employee  = new employee ();
         $employee ->cin = $request->input('cin');
         $employee ->nom = $request->input('nom');
@@ -48,7 +46,7 @@ class EmployeeController extends Controller
 
         return view('employee.edit', ['employee' => $employee ]);
     }
-    public function update(Request $request, $id) {
+    public function update(employeeRequest $request, $id) {
         $employee  = employee::find($id);
 
         $employee ->cin = $request->input('cin');

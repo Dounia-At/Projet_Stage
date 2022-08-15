@@ -19,4 +19,8 @@ class Materiel extends Model
     {
         return $this->belongsTo('App\Fournisseur');
     }
+    public function affectations()
+    {
+        return $this->hasMany('App\Affectation');
+    }
 }

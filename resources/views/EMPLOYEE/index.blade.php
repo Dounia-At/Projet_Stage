@@ -8,21 +8,23 @@
             @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
             @endif
         <h1>Liste des employees</h1>
         <div class="pull-right ">
             <a href="{{ url('employees/create') }}" class="btn btn-success">Nouveau employee</a>
         </div>
+        <br> <br> <br>
         <table class="table">
             <head>
             <tr>
-                <th>cin</th>
-                <th>nom</th>
-                <th>prenom</th>
-                <th>adresse</th>
-                <th>email</th>
-                <th>telephone</th>
+                <th>CIN</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -34,9 +36,8 @@
                     <td>{{ $employee->nom }} </td>
                     <td>{{ $employee->prenom }} </td>
                     <td>{{ $employee->adresse }} </td>
-                    <td>{{ $employee->email }} </td>
                     <td>{{ $employee->telephone }} </td>
-                   
+                    <td>{{ $employee->email }} </td>                   
                     <td>
                         <form action="{{ url('employees/'.$employee->id) }}" method="post">
                             {{ csrf_field() }}

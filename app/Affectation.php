@@ -10,4 +10,13 @@ class Affectation extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
+    public function employee()
+    {
+        return $this->belongsTo('App\Employee');
+    }
+    public function materiel()
+    {
+        return $this->belongsTo('App\Materiel');
+    }
 }

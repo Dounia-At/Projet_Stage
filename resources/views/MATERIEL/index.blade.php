@@ -8,6 +8,7 @@
             @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
             @endif
         <h1>Liste des Materiels</h1>
@@ -21,7 +22,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 shadow p-4 mb-4 "  >
                     <img src="{{ asset('storage/'.$materiel->photo) }}" class="img-thumbnail"  alt="{{ $materiel->nom }}">
                     <div class="caption">
-                        <h3>{{ $materiel->nom }}</h3>
+                        <h3>{{ $materiel->nom }} - {{ $materiel->fournisseur->nomFornisseur }}</h3>
                         <p>...</p>
                         <div>
                         <form action="{{ url('materiaux/'.$materiel->id) }}" method="post">

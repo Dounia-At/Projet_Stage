@@ -14,7 +14,7 @@
             
                 <div class="form-group @if($errors->get('libelle')) has-error @endif">
                 <label for="libelle">Nouveau Categorie :</label>
-                <input type="text" name="libelle" class="form-control" value="{{ old('libelle') }}">
+                <input type="text" name="libelle" class="form-control" value="{{ $categorie->libelle }}">
                 @if($errors->get('libelle'))
                     <div class="alert alert-warning">
                         <ul>

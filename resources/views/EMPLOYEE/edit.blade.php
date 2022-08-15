@@ -14,7 +14,7 @@
             
                 <div class="form-group @if($errors->get('cin')) has-error @endif">
                     <label for="cin">CIN :</label>
-                    <input type="text" name="cin" class="form-control" value="{{ old('cin') }}">
+                    <input type="text" name="cin" class="form-control" value="{{ $employee->cin }}">
                     @if($errors->get('cin'))
                         <div class="alert alert-warning">
                             <ul>
@@ -28,7 +28,7 @@
 
                 <div class="form-group @if($errors->get('nom')) has-error @endif">
                     <label for="nom">Nom :</label>
-                    <input type="text" name="nom" class="form-control" value="{{ old('nom') }}">
+                    <input type="text" name="nom" class="form-control" value="{{ $employee->nom }}">
                     @if($errors->get('nom'))
                         <div class="alert alert-warning">
                             <ul>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group @if($errors->get('prenom')) has-error @endif">
                 <label for="prenom">Prenom :</label>
-                <input type="text" name="prenom" class="form-control" value="{{ old('prenom') }}">
+                <input type="text" name="prenom" class="form-control" value="{{ $employee->prenom }}">
                 @if($errors->get('prenom'))
                     <div class="alert alert-warning">
                         <ul>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group @if($errors->get('adresse')) has-error @endif">
                 <label for="adresse">Adresse :</label>
-                <textarea name="adresse" class="form-control" >{{ old('adresse') }} </textarea>
+                <textarea name="adresse" class="form-control" >{{ $employee->adresse }} </textarea>
                 
                 @if($errors->get('adresse'))
                     <div class="alert alert-warning">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-group @if($errors->get('telephone')) has-error @endif">
                 <label for="telephone">Tel :</label>
-                <input type="text" name="telephone" class="form-control" value="{{ old('telephone') }}">
+                <input type="tel" name="telephone" class="form-control" value="{{ $employee->telephone }}">
                 @if($errors->get('telephone'))
                     <div class="alert alert-warning">
                         <ul>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group @if($errors->get('email')) has-error @endif">
                 <label for="email">Email :</label>
-                <input type="number" name="email" class="form-control" value="{{ old('email') }}">
+                <input type="number" name="email" class="form-control" value="{{ $employee->email }}">
                 @if($errors->get('email'))
                     <div class="alert alert-warning">
                         <ul>

@@ -6,19 +6,14 @@ use Illuminate\Http\Request;
 
 use App\categorie;
 
-
+use App\Http\Requests\categorieRequest;
 
 class CategorieController extends Controller
 {
     public function __construct(){
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     
-    public function show($id) {
-        
-        return view('categorie.show');
-    }
-
     public function index() {
        
         $listcat = Categorie::all();
@@ -27,7 +22,7 @@ class CategorieController extends Controller
     public function create() {
         return view('CATEGORIE.create');
     }
-    public function store(Request $request) {
+    public function store(categorieRequest $request) {
         $categorie = new Categorie();
         $categorie->libelle = $request->input('libelle');
         
@@ -44,7 +39,7 @@ class CategorieController extends Controller
 
         return view('categorie.edit', ['categorie' => $categorie]);
     }
-    public function update(Request $request, $id) {
+    public function update(categorieRequest $request, $id) {
         $categorie = Categorie::find($id);
 
         $categorie->libelle = $request->input('libelle');

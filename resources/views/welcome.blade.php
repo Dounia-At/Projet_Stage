@@ -33,23 +33,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
-                            <li><a href="{{ url('affectation') }}">Affectation</a></li>
                             <li><a href="{{ url('materiaux') }}">Materiaux</a></li>
                             <li><a href="{{ url('employees') }}">Personnel</a></li>
+                            <li><a href="{{ url('affectations') }}">Affectation</a></li>
                             <li><a href="{{ url('fournisseurs') }}">Fournisseur</a></li>    
-                        @else
-                            <li><a href="{{ url('materiaux') }}">Materiaux</a></li>
-                            <li><a href="{{ url('employees') }}">Personnel</a></li>
-                            <li><a href="{{ url('fournisseurs') }}">Fournisseur</a></li>
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::check())
-                            <a href="{{ url('materiaux') }}">Home</a>
-                        @else
+                        @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @endif
@@ -57,6 +51,27 @@
                 </div>
             </div>
         </nav>    
-    
+        <br> <br> <br>
+        @if (Auth::guest())
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">BIENVENUE!!</div>
+
+                        <div class="panel-body text-center">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
+                            Veuillez se connecter!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </body>
 </html>

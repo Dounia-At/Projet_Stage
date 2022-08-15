@@ -14,7 +14,7 @@
             
                 <div class="form-group @if($errors->get('nom')) has-error @endif">
                     <label for="nom">Libelle</label>
-                    <input type="text" name="nom" class="form-control" value="{{ old('nom') }}">
+                    <input type="text" name="nom" class="form-control" value="{{ $materiel->nom }}">
                     @if($errors->get('nom'))
                         <div class="alert alert-warning">
                             <ul>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group @if($errors->get('quantiteStock')) has-error @endif">
                     <label for="quantiteStock">Quantite de stock</label>
-                    <input type="number" name="quantiteStock" class="form-control" value="{{ old('quantiteStock') }}">
+                    <input type="number" name="quantiteStock" class="form-control" value="{{ $materiel->quantiteStock }}">
                     @if($errors->get('quantiteStock'))
                         <div class="alert alert-warning">
                             <ul>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group @if($errors->get('marque')) has-error @endif">
                 <label for="marque">Marque</label>
-                    <input type="text" name="marque" class="form-control" value="{{ old('marque') }}">
+                    <input type="text" name="marque" class="form-control" value="{{ $materiel->marque }}">
                     @if($errors->get('marque'))
                         <div class="alert alert-warning">
                             <ul>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group @if($errors->get('description')) has-error @endif">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control" >{{ old('description') }} </textarea>
+                    <textarea name="description" class="form-control" >{{ $materiel->description }} </textarea>
                     @if($errors->get('description'))
                         <div class="alert alert-warning">
                             <ul>

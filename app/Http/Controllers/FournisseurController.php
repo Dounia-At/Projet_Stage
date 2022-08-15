@@ -6,17 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Fournisseur;
 
+use App\Http\Requests\fournisseurRequest;
+
 class FournisseurController extends Controller
 {
     public function __construct(){
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     
-    public function show($id) {
-        
-        return view('fournisseur.show');
-    }
-
     public function index() {
        
         $listcat = fournisseur::all();
@@ -25,7 +22,7 @@ class FournisseurController extends Controller
     public function create() {
         return view('fournisseur.create');
     }
-    public function store(Request $request) {
+    public function store(fournisseurRequest $request) {
         $fournisseur = new fournisseur();
         $fournisseur->nomFournisseur = $request->input('nomFournisseur');
         $fournisseur->adresse = $request->input('adresse');
@@ -45,7 +42,7 @@ class FournisseurController extends Controller
 
         return view('fournisseur.edit', ['fournisseur' => $fournisseur]);
     }
-    public function update(Request $request, $id) {
+    public function update(fournisseurRequest $request, $id) {
         $fournisseur = fournisseur::find($id);
 
         $fournisseur->nomFournisseur = $request->input('nomFournisseur');
