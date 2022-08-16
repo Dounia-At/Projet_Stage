@@ -19,4 +19,7 @@ class Affectation extends Model
     {
         return $this->belongsTo('App\Materiel');
     }
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

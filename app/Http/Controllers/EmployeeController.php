@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Employee;
 
+use Auth;
+
 use App\Http\Requests\employeeRequest;
 
 
@@ -30,8 +32,8 @@ class EmployeeController extends Controller
         $employee ->prenom = $request->input('prenom');
         $employee ->adresse = $request->input('adresse');
         $employee ->email = $request->input('email');
-        $employee->telephone = (int) $request->input('telephone');
-
+        $employee->telephone =  $request->input('telephone');
+        $employee->user_id = Auth::user()->id;
         
         $employee ->save();
 
@@ -54,8 +56,8 @@ class EmployeeController extends Controller
         $employee ->prenom = $request->input('prenom');
         $employee ->adresse = $request->input('adresse');
         $employee ->email = $request->input('email');
-        $employee->telephone = (int) $request->input('telephone');
-
+        $employee->telephone = $request->input('telephone');
+        $employee->user_id = Auth::user()->id;
         
         $employee ->save();
 
@@ -63,7 +65,9 @@ class EmployeeController extends Controller
     }
     public function destroy($id) {
         $employee  = employee::find($id);
-
+        $employee->user_id = Auth::user()->id;
+        
+        $employee ->save();
         $employee ->delete();
 
         return redirect('employees');

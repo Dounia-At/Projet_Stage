@@ -11,13 +11,13 @@
             <form action="{{ url('fournisseurs') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
             
-                <div class="form-group @if($errors->get('nomFornisseur')) has-error @endif">
-                    <label for="nomFornisseur">Nom Complet :</label>
-                    <input type="text" name="nomFornisseur" class="form-control" value="{{ old('nomFornisseur') }}">
-                    @if($errors->get('nomFornisseur'))
+                <div class="form-group @if($errors->get('nomFournisseur')) has-error @endif">
+                    <label for="nomFournisseur">Nom Complet :</label>
+                    <input type="text" name="nomFournisseur" class="form-control" value="{{ old('nomFournisseur') }}">
+                    @if($errors->get('nomFournisseur'))
                         <div class="alert alert-warning">
                             <ul>
-                            @foreach($errors->get('nomFornisseur') as $message)
+                            @foreach($errors->get('nomFournisseur') as $message)
                                 <li>{{ $message }}</li>
                             @endforeach
                             </ul>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group @if($errors->get('telephone')) has-error @endif">
                 <label for="telephone">Tel :</label>
-                <input type="tel" name="telephone" class="form-control" value="{{ old('telephone') }}">
+                <input type="text" name="telephone" class="form-control" value="{{ old('telephone') }}">
                 @if($errors->get('telephone'))
                     <div class="alert alert-warning">
                         <ul>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group @if($errors->get('email')) has-error @endif">
                 <label for="email">Email :</label>
-                <input type="text" name="email" class="form-control" value="{{ old('email') }}">
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                 @if($errors->get('email'))
                     <div class="alert alert-warning">
                         <ul>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\categorie;
 
+use Auth;
+
 use App\Http\Requests\categorieRequest;
 
 class CategorieController extends Controller
@@ -25,6 +27,7 @@ class CategorieController extends Controller
     public function store(categorieRequest $request) {
         $categorie = new Categorie();
         $categorie->libelle = $request->input('libelle');
+        $categorie->user_id = Auth::user()->id;
         
         $categorie->save();
 
@@ -43,6 +46,7 @@ class CategorieController extends Controller
         $categorie = Categorie::find($id);
 
         $categorie->libelle = $request->input('libelle');
+        $categorie->user_id = Auth::user()->id;
         
         $categorie->save();
 
@@ -50,6 +54,9 @@ class CategorieController extends Controller
     }
     public function destroy($id) {
         $categorie = Categorie::find($id);
+        $categorie->user_id = Auth::user()->id;
+        
+        $categorie->save();
 
         $categorie->delete();
 

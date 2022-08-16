@@ -28,6 +28,9 @@ class CreateMateriauxTable extends Migration
             $table->integer('categorie_id')->unsigned();
             $table->foreign('categorie_id')->references('id')->on('categories');
         
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();
         });

@@ -44,7 +44,7 @@
                     <label for="fournisseur_id">Fournisseur</label>
                     <select class="form-control" name="fournisseur_id">
                         @foreach($fournisseurs as $fournisseur)
-                            <option value="{{ $fournisseur->id }}">{{ $fournisseur->nomFornisseur }}</option>
+                            <option value="{{ $fournisseur->id }}">{{ $fournisseur->nomFournisseur }}</option>
                         @endforeach
                     </select>
                 </div>

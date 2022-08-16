@@ -35,15 +35,16 @@
                 @foreach($affectations as $affectation)
                     <tr>
                         <td>{{ $affectation->employee->nom }} {{ $affectation->employee->prenom }} - {{ $affectation->employee->cin }}</td>
-                        <td>{{ $affectation->materiel->nom }} - {{ $affectation->materiel->fournisseur->nomFornisseur }}</td>
+                        <td>{{ $affectation->materiel->nom }} - {{ $affectation->materiel->fournisseur->nomFournisseur }}</td>
                         <td >{{ $affectation->quantite }}</td>
                         <td>
                             <form action="{{ url('affectations/'.$affectation->id) }}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <a href="{{ url('affectations/'.$affectation->id.'/edit') }}" class="btn btn-default">Editer</a>
-                            
+                            @can('delete', $affectation)
                                 <button type="submit" class="btn btn-danger">Supprimer</a>
+                            @endcan
                             </form>    
                         </td>
                     </tr>

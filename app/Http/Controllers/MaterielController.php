@@ -52,6 +52,7 @@ class MaterielController extends Controller
         $materiel->marque = $request->input('marque');
         $materiel->date_entree = $request->input('date_entree');
         $materiel->description = $request->input('description');
+        $materiel->user_id = Auth::user()->id;
         
         $materiel->save();
 
@@ -82,6 +83,7 @@ class MaterielController extends Controller
         $materiel->marque = $request->input('marque');
         $materiel->date_entree = $request->input('date_entree');
         $materiel->description = $request->input('description');
+        $materiel->user_id = Auth::user()->id;
         
         $materiel->save();
 
@@ -89,7 +91,9 @@ class MaterielController extends Controller
     }
     public function destroy($id) {
         $materiel = Materiel::find($id);
-
+        $materiel->user_id = Auth::user()->id;
+        
+        $materiel->save();
         $materiel->delete();
 
         return redirect('materiaux');

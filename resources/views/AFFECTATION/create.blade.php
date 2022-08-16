@@ -24,7 +24,7 @@
                     <label for="materiel_id">Fournisseur</label>
                     <select class="form-control" name="materiel_id">
                         @foreach($materiaux as $materiel)
-                            <option value="{{ $materiel->id }}">{{ $materiel->nom }} - {{ $materiel->fournisseur->nomFornisseur }} ({{ $materiel->quantiteStock }})</option>
+                            <option value="{{ $materiel->id }}">{{ $materiel->nom }} - {{ $materiel->fournisseur->nomFournisseur }} ({{ $materiel->quantiteStock }})</option>
                         @endforeach
                     </select>
                 </div>

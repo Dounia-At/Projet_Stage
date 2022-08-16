@@ -23,6 +23,9 @@ class CreateAffectationsTable extends Migration
             $table->integer('materiel_id')->unsigned();
             $table->foreign('materiel_id')->references('id')->on('materiaux');
         
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();
         });

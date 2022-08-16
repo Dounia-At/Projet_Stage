@@ -20,9 +20,9 @@
             <head>
             <tr>
                 <th>Fournisseur</th>
-                <th>Adresse</th>
                 <th>Telephone</th>
                 <th>Email</th>
+                <th>Adresse</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -30,18 +30,18 @@
             <body>
                 @foreach($fournisseurs as $fournisseur)
                 <tr>
-                    <td>{{ $fournisseur->nomFornisseur }} </td>
-                    <td>{{ $fournisseur->adresse }} </td>
+                    <td>{{ $fournisseur->nomFournisseur }} </td>
                     <td>{{ $fournisseur->telephone }} </td>
                     <td>{{ $fournisseur->email }} </td>
+                    <td>{{ $fournisseur->adresse }} </td>
                     <td>
                         <form action="{{ url('fournisseurs/'.$fournisseur->id) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <a href="{{ url('fournisseurs/'.$fournisseur->id.'/edit') }}" class="btn btn-default">Editer</a>
-                           <!-- @can('delete', $fournisseur) @endcan-->
+                        @can('delete', $fournisseur) 
                             <button type="submit" class="btn btn-danger">Supprimer</a>
-                           
+                        @endcan
                         </form>    
                     </td>
                 </tr>

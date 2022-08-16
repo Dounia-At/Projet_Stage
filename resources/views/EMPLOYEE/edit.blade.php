@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-group @if($errors->get('telephone')) has-error @endif">
                 <label for="telephone">Tel :</label>
-                <input type="tel" name="telephone" class="form-control" value="{{ $employee->telephone }}">
+                <input type="text" name="telephone" class="form-control" value="{{ $employee->telephone }}">
                 @if($errors->get('telephone'))
                     <div class="alert alert-warning">
                         <ul>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group @if($errors->get('email')) has-error @endif">
                 <label for="email">Email :</label>
-                <input type="number" name="email" class="form-control" value="{{ $employee->email }}">
+                <input type="email" name="email" class="form-control" value="{{ $employee->email }}">
                 @if($errors->get('email'))
                     <div class="alert alert-warning">
                         <ul>

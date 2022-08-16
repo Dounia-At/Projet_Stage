@@ -23,4 +23,7 @@ class Materiel extends Model
     {
         return $this->hasMany('App\Affectation');
     }
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -16,30 +16,39 @@
             <a href="{{ url('materiaux/create') }}" class="btn btn-success">Nouveau Materiel</a>
         </div>
         <br> <br> <br>
+        <table class="table">
+            <head>
+            <tr>
+                <th></th>
+                <th>Materiel</th>
+                <th>Fournisseur</th>
+                <th>Actions</th>
+            </tr>
+            </head>
 
-        <div class="row" >
-            @foreach($materiaux as $materiel)
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 shadow p-4 mb-4 "  >
-                    <img src="{{ asset('storage/'.$materiel->photo) }}" class="img-thumbnail"  alt="{{ $materiel->nom }}">
-                    <div class="caption">
-                        <h3>{{ $materiel->nom }} - {{ $materiel->fournisseur->nomFornisseur }}</h3>
-                        <p>...</p>
-                        <div>
+            <body>
+                @foreach($materiaux as $materiel)
+                <tr>
+                    <td> <img src="{{ asset('storage/'.$materiel->photo) }}" class="img-thumbnail"  alt="{{ $materiel->nom }}"> </td>
+                    <td>{{ $materiel->nom }} </td>
+                    <td>{{ $materiel->fournisseur->nomFournisseur }} </td>
+                    <td>
                         <form action="{{ url('materiaux/'.$materiel->id) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <a href="{{ url('materiaux/'.$materiel->id) }}" class="btn btn-primary" role="button">Details</a>
                             <a href="{{ url('materiaux/'.$materiel->id.'/edit') }}" class="btn btn-default" role="button">Editer</a>
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                              
-                        </form>    
-                        </div>
-                    </div>
-            </div>
-            @endforeach
-        </div>
+                            @can('delete', $materiel) 
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            @endcan     
+                        </form>   
+                    </td>
+                </tr>
+                @endforeach
+            </body>
+        </table>
 
-          
+       
         
         </div>
     </div>

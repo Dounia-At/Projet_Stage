@@ -17,7 +17,7 @@
                     </tr>
                     <tr>
                         <td>Fournisseur</td>
-                        <td>{{ $materiel->fournisseur->nomFornisseur }}</td>
+                        <td>{{ $materiel->fournisseur->nomFournisseur }}</td>
                     </tr>
                     <tr>
                         <td>Quantite de stock </td>

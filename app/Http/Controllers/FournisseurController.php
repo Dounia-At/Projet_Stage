@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Fournisseur;
 
+use Auth;
+
 use App\Http\Requests\fournisseurRequest;
 
 class FournisseurController extends Controller
@@ -28,7 +30,8 @@ class FournisseurController extends Controller
         $fournisseur->adresse = $request->input('adresse');
         $fournisseur->telephone = $request->input('telephone');
         $fournisseur->email = $request->input('email');
-       
+        $fournisseur->user_id = Auth::user()->id;
+   
         $fournisseur->save();
 
         session()->flash('success', 'La fournisseur est bien enregistrés!!');
@@ -49,6 +52,7 @@ class FournisseurController extends Controller
         $fournisseur->adresse = $request->input('adresse');
         $fournisseur->telephone = $request->input('telephone');
         $fournisseur->email = $request->input('email');
+        $fournisseur->user_id = Auth::user()->id;
        
         $fournisseur->save();
 
@@ -56,7 +60,9 @@ class FournisseurController extends Controller
     }
     public function destroy($id) {
         $fournisseur = fournisseur::find($id);
-
+        $fournisseur->user_id = Auth::user()->id;
+       
+        $fournisseur->save();
         $fournisseur->delete();
 
         return redirect('fournisseurs');

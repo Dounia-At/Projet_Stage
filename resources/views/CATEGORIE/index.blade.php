@@ -33,9 +33,9 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <a href="{{ url('categories/'.$categorie->id.'/edit') }}" class="btn btn-default">Editer</a>
-                           <!-- @can('delete', $categorie) @endcan-->
+                            @can('delete', $categorie)
                             <button type="submit" class="btn btn-danger">Supprimer</a>
-                           
+                            @endcan
                         </form>    
                     </td>
                 </tr>

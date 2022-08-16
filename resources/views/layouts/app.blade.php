@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('materiaux') }}">
                         ONEP
                     </a>
                 </div>
@@ -41,6 +41,7 @@
                             <li><a href="{{ url('employees') }}">Personnel</a></li>
                             <li><a href="{{ url('affectations') }}">Affectation</a></li>
                             <li><a href="{{ url('fournisseurs') }}">Fournisseur</a></li>
+                            <li><a href="{{ url('categories') }}">Categorie</a></li>
                         @endif
                     </ul>
 

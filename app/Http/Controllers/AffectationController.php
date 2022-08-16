@@ -40,6 +40,7 @@ class AffectationController extends Controller
             $affectation->employee_id = $request->input('employee_id');
             $affectation->materiel_id = $request->input('materiel_id');
             $affectation->quantite = (int) $request->input('quantite');
+            $affectation->user_id = Auth::user()->id;
             
             $affectation->save();
             $materiel->save();
@@ -72,6 +73,7 @@ class AffectationController extends Controller
             $affectation->employee_id = $request->input('employee_id');
             $affectation->materiel_id = $request->input('materiel_id');
             $affectation->quantite = (int) $request->input('quantite');
+            $affectation->user_id = Auth::user()->id;
             
             $materiel->save();
             $affectation->save();
@@ -89,6 +91,8 @@ class AffectationController extends Controller
         $affectation = Affectation::find($id);
         $materiel = Materiel::find($affectation->materiel_id);
         $materiel->quantiteStock += $affectation->quantite;
+        $affectation->user_id = Auth::user()->id;
+        $affectation->save();
         $affectation->delete();
         $materiel->save();
 
