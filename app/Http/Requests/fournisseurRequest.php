@@ -24,7 +24,7 @@ class fournisseurRequest extends FormRequest
     public function rules()
     {
         return [
-            'nomFournisseur' => 'required|min:3|max:100',
+            'nomFournisseur' => 'required|min:3|max:100|unique:fournisseurs,nomFournisseur',
             'telephone' => [ 
                 'required',
                 'regex:/^(?:(?:(?:\+|00)212[\s]?(?:[\s]?\(0\)[\s]?)?)|0){1}(?:5[\s.-]?[2-3]|6[\s.-]?[13-9]){1}[0-9]{1}(?:[\s.-]?\d{2}){3}$/'

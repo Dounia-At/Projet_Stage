@@ -24,7 +24,7 @@ class employeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'cin' => 'required|regex:/^[A-Za-z]{1,2}[0-9]{5,6}$/',
+            'cin' => 'required|regex:/^[A-Za-z]{1,2}[0-9]{5,6}$/|unique:employees,cin',
             'nom' => 'required|min:3|max:25',
             'prenom' => 'required|min:3|max:25',
             'telephone' => [ 

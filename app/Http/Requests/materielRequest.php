@@ -24,7 +24,7 @@ class materielRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required|min:3|max:100',
+            'nom' => 'required|min:3|max:100|unique:materiaux,nom',
             'marque' => 'required|min:3|max:100',
             'date_entree' => 'required|date',
             'description' => 'min:0|max:200',

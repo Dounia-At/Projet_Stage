@@ -24,7 +24,7 @@ class categorieRequest extends FormRequest
     public function rules()
     {
         return [
-            'libelle' => 'required|min:3|max:60|alpha_dash'
+            'libelle' => 'required|min:3|max:60|alpha_dash|unique:categories,libelle'
         ];
     }
 }
