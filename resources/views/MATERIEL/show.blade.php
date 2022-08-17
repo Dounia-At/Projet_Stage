@@ -33,6 +33,10 @@
                         <td>{{ $materiel->date_entree }}</td>
                     </tr>
                     <tr>
+                        <td>Modifier par </td>
+                        <td>{{ $materiel->user->name }}</td>
+                    </tr>
+                    <tr>
                         <td>Description </td>
                         <td>{{ $materiel->description }}</td>
                     </tr>

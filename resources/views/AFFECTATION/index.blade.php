@@ -28,6 +28,8 @@
                 <th>Personnel</th>
                 <th>Materiel</th>
                 <th>Quantité</th>
+                <th>Date d'affectation</th>
+                <th>Ajouter par</th>
                 <th>Actions</th>
             </tr>
             </head>
@@ -37,6 +39,8 @@
                         <td>{{ $affectation->employee->nom }} {{ $affectation->employee->prenom }} - {{ $affectation->employee->cin }}</td>
                         <td>{{ $affectation->materiel->nom }} - {{ $affectation->materiel->fournisseur->nomFournisseur }}</td>
                         <td >{{ $affectation->quantite }}</td>
+                        <td >{{ $affectation->created_at }}</td>
+                        <td >{{ $affectation->user->name }}</td>
                         <td>
                             <form action="{{ url('affectations/'.$affectation->id) }}" method="post">
                                 {{ csrf_field() }}
