@@ -22,7 +22,7 @@
             <a href="{{ url('affectations/create') }}" class="btn btn-success">Nouveau affectation</a>
         </div>
         <br> <br> <br>
-        <table class="table">
+        <table class="table" >
         <head>
             <tr>
                 <th>Personnel</th>

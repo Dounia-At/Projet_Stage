@@ -17,7 +17,7 @@
     </head>
     <body>
     <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -25,7 +25,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('materiaux') }}">
-                        ONEP
+                    <img src="{{ asset('storage/image/onep-logo-A641797473.png') }}" class="logo" alt="ONEP">
                     </a>
                 </div>
 
